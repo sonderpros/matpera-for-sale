@@ -59,6 +59,8 @@ ul.facts li::before{content:"";width:12px;height:12px;margin-top:7px;border-radi
 .row{display:flex;flex-wrap:wrap;gap:8px}
 .btn{font:inherit;font-weight:600;min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:10px;border:0;text-decoration:none;cursor:pointer;background:var(--bg);color:var(--ink)}
 .btn.wa{background:var(--ok);color:var(--surface)}
+.btn{flex-direction:column;gap:0;line-height:1.2}
+.btn .btn-ru{font-size:.72rem;font-weight:500;opacity:.8}
 .btn:focus-visible{outline:2px solid var(--spool);outline-offset:2px}
 .small{font-size:.85rem;opacity:.85}
 .ru{background:var(--chalk);border-radius:12px;padding:14px 16px;direction:ltr;text-align:left}
@@ -105,9 +107,9 @@ footer{font-size:.82rem;color:var(--muted)}
     <p class="who" id="c-h">לפרטים נוספים: איגור, בעלה של התופרת</p>
     <p class="num" id="phone">054-547-9960</p>
     <div class="row">
-      <a class="btn" href="tel:0545479960">📞 להתקשר</a>
-      <a class="btn wa" href="https://wa.me/972545479960?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%99%D7%92%D7%95%D7%A8%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%A9%D7%9E%D7%AA%D7%A4%D7%A8%D7%AA%20%D7%94%D7%AA%D7%99%D7%A7%D7%95%D7%A0%D7%99%D7%9D%20%D7%91%D7%A1%D7%99%D7%A8%D7%A7%D7%99%D7%9F%205%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener">💬 וואטסאפ</a>
-      <button class="btn" id="copy" type="button">העתקת המספר</button>
+      <a class="btn" href="tel:0545479960"><span>📞 להתקשר</span><span class="btn-ru" lang="ru">Позвонить</span></a>
+      <a class="btn wa" href="https://wa.me/972545479960?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%99%D7%92%D7%95%D7%A8%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%A9%D7%9E%D7%AA%D7%A4%D7%A8%D7%AA%20%D7%94%D7%AA%D7%99%D7%A7%D7%95%D7%A0%D7%99%D7%9D%20%D7%91%D7%A1%D7%99%D7%A8%D7%A7%D7%99%D7%9F%205%20%D7%9C%D7%9E%D7%9B%D7%99%D7%A8%D7%94.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener"><span>💬 וואטסאפ</span><span class="btn-ru" lang="ru">Написать в WhatsApp</span></a>
+      <button class="btn" id="copy" type="button"><span id="copy-he">העתקת המספר</span><span class="btn-ru" lang="ru">Скопировать номер</span></button>
     </div>
     <p class="small">אם הכפתורים אינם נפתחים, ניתן להעתיק את המספר ולהתקשר ישירות.</p>
   </section>
@@ -120,7 +122,7 @@ footer{font-size:.82rem;color:var(--muted)}
 </div>
 <script>
 document.getElementById("copy").addEventListener("click",()=>{
-  const el=document.getElementById("phone"), btn=document.getElementById("copy");
+  const el=document.getElementById("phone"), btn=document.getElementById("copy-he");
   const ok=()=>{btn.textContent="המספר הועתק";setTimeout(()=>btn.textContent="העתקת המספר",2000);};
   const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);};
   try{navigator.clipboard.writeText("054-547-9960").then(ok,sel);}catch(e){sel();}
